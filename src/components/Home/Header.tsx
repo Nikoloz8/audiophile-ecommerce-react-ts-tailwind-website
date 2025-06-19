@@ -3,10 +3,10 @@ import tailwind from "../../styles/tailwind"
 import HeaderPart from "./HeaderPart"
 import index from "../../utils"
 
-export default function Header() {
+export default function Header({ showCart, setShowCart }: { showCart: boolean, setShowCart: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const [cart, setCart] = useState<TItem[]>([])
-    const { H6, P, SubTitle } = tailwind()
+    const { H6, P, SubTitle, ButtonStyle } = tailwind()
 
     useEffect(() => {
         const storedCart = localStorage.getItem("cart")
@@ -25,8 +25,8 @@ export default function Header() {
     return (
         <header className="flex w-[100%] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative">
             <HeaderPart />
-            <img src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
-            <div className="absolute flex p-[32px] top-[100px] right-0 z-30! flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px]">
+            <img onClick={() => setShowCart(!showCart)} src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
+            {showCart ? <div className="absolute flex p-[32px] top-[100px] right-0 z-30! flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px]">
                 <div className="flex justify-between w-[100%]">
                     <h6 className={`${H6}`}>CART ({cart ? cart.length : "0"})</h6>
                     <a href="" onClick={() => handleClearCart()} className={`underline ${P} text-[rgba(0,0,0,0.5)]!`}>Remove all</a>
@@ -56,7 +56,12 @@ export default function Header() {
                         <h6 className={`${P} text-[rgba(0,0,0,0.5)]!`}>TOTAL</h6>
                         <h6 className={`${H6}`}>${handleGetTotal().toLocaleString()}</h6>
                     </div>
+
+                    <button className={`${ButtonStyle}`}>
+                        CHECKOUT
+                    </button>
+
                 </div>
-            </div>
+            </div> : undefined}
         </header>)
 }
