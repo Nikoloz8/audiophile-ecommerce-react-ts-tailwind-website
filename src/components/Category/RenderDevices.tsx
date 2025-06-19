@@ -85,6 +85,7 @@ export default function RenderDevices() {
                             <button onClick={() => {
                                 handleAddToCart({ name: e.name, count: count, price: e.price, image: e.image.desktop })
                                 setCount(0)
+                                window.location.reload()
                             }
                             } className={`${ButtonStyle}`}>
                                 ADD TO CART
