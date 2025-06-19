@@ -9,7 +9,7 @@ export default function tailwind() {
     const Overline = "text-[1.4rem] font-[400] leading-[100%] tracking-[10px] text-[rgba(216,125,74,1)]"
     const SubTitle = "text-[1.3rem] font-[700] leading-[25px] tracking-[0.93px] text-[rgba(216,125,74,1)]"
     const P = "text-[1.5rem] font-[400] leading-[25px] tracking-[0] text-[rgba(0,0,0,1)]"
+    const ButtonStyle = `p-[11.5px_30px] cursor-pointer ${SubTitle} text-[rgba(255,255,255,1)] bg-[rgba(216,125,74,1)]`
 
-
-    return { H1, H2, H3, H4, H5, H6, Overline, SubTitle, P }
+    return { H1, H2, H3, H4, H5, H6, Overline, SubTitle, P, ButtonStyle }
 }
