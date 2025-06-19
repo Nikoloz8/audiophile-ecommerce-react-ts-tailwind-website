@@ -2,25 +2,30 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import data from "../../data.json"
 import tailwind from "../../styles/tailwind"
 import { useEffect, useState } from "react"
+import index from "../../utils"
 
 export default function RenderDevices() {
-
+    
+    const [count, setCount] = useState(0)
+    
     const { category } = useParams()
+    const navigate = useNavigate()
+    const { Overline, SubTitle, P, ButtonStyle, H2, H6 } = tailwind()
+    const location = useLocation().pathname
+    const { handleAddToCart } = index({ count })
+    
+    
     let filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
-    const { Overline, P, ButtonStyle, H2, H6 } = tailwind()
     const isDetails = useLocation().pathname.includes("details")
     if (isDetails) {
         const { id } = useParams()
         filteredData = data.filter((e) => e.id === Number(id))
     }
-    const navigate = useNavigate()
-    const location = useLocation().pathname
+    
     const savePreviousPath = () => {
         localStorage.setItem("previousPath", location)
     }
-    const [count, setCount] = useState(0)
-    const { SubTitle } = tailwind()
-
+    
     useEffect(() => {
         const cart = localStorage.getItem("cart")
         if (!cart) {
@@ -28,35 +33,7 @@ export default function RenderDevices() {
         }
     }, [])
 
-    const handleAddToCart = (item: TItem) => {
-        const cart = localStorage.getItem("cart")
-        if (!cart) return
-        const parsedCart = JSON.parse(cart)
-
-        const isInCart = (item: TItem) => {
-            for (let i = 0; i < parsedCart.length; i++) {
-                if (item.name === parsedCart[i].name) {
-                    return true
-                }
-                return false
-            }
-        }
-
-        if (isInCart(item)) {
-            const itemInLocalstorage = parsedCart.find((e: TItem) => e.name === item.name)
-            const filteredCart = parsedCart.filter((e: TItem) => e.name !== item.name)
-            itemInLocalstorage.count += count
-            filteredCart.push(itemInLocalstorage)
-            const stringedCart = JSON.stringify(filteredCart)
-            localStorage.setItem("cart", stringedCart)
-        } else {
-            parsedCart.push(item)
-            const stringedCart = JSON.stringify(parsedCart)
-            localStorage.setItem("cart", stringedCart)
-        }
-
-    }
-
+    
     return filteredData.map((e, i) => {
         return <div key={i} className={`flex justify-between w-[100%] flex-row-reverse items-center ${i % 2 === 0 ? "flex-row!" : ""}`}>
             <img src={e.image.desktop} className="w-[540px]" alt="" />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import tailwind from "../../styles/tailwind"
 import HeaderPart from "./HeaderPart"
+import index from "../../utils"
 
 export default function Header() {
 
@@ -19,35 +20,7 @@ export default function Header() {
         }
     }, [])
 
-    const formatName = (name: string) => {
-        const splitedName = name.split(" ")
-        const formatedName = splitedName.slice(0, splitedName.length - 1).join(" ")
-        return formatedName
-    }
-
-    const handleClearCart = () => {
-        localStorage.setItem("cart", "[]")
-        setCart([])
-    }
-
-    const handleCountChange = (name: string, action: boolean) => {
-        const updatedCart = cart.map((item) => {
-            if (item.name === name) {
-                const newCount = action ? item.count + 1 : item.count - 1
-                return { ...item, count: newCount > 0 ? newCount : 1 }
-            }
-            return item
-        })
-
-        setCart(updatedCart)
-        localStorage.setItem("cart", JSON.stringify(updatedCart))
-    }
-
-    const handleGetTotal = () => {
-        let count = 0
-        cart.forEach((e) => count += e.price * e.count)
-        return count
-    }
+    const { handleClearCart, formatName, handleCountChange, handleGetTotal } = index({ cart, setCart })
 
     return (
         <header className="flex w-[100%] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative">

@@ -6,3 +6,9 @@ type TItem = {
     image: string
 }
 
+type TFunctions = Partial<{
+    setCart: React.Dispatch<React.SetStateAction<TItem[]>>
+    cart: TItem[]
+    count: number
+}>
+
