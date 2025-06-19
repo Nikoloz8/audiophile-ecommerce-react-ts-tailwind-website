@@ -13,7 +13,9 @@ export default function HeaderPart() {
             <nav>
                 <ul className="flex gap-[32px]">
                     {navHeader.map((e, i) => {
-                        return <li onClick={() => navigate(e)} className={`${SubTitle} tracking-[2px] text-[rgba(255,255,255,1)] cursor-pointer`} key={i}>{e.toUpperCase()}</li>
+                        return <li onClick={() => {
+                            e === "home" ? navigate("/") : navigate(`/category/${e}`)
+                        }} className={`${SubTitle} tracking-[2px] text-[rgba(255,255,255,1)] cursor-pointer`} key={i}>{e.toUpperCase()}</li>
                     })}
                 </ul>
             </nav>
