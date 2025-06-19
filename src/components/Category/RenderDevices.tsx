@@ -1,13 +1,13 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import data from "../../data.json"
 import tailwind from "../../styles/tailwind"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function RenderDevices() {
 
     const { category } = useParams()
     let filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
-    const { Overline, P, ButtonStyle, H2 } = tailwind()
+    const { Overline, P, ButtonStyle, H2, H6 } = tailwind()
     const isDetails = useLocation().pathname.includes("details")
     if (isDetails) {
         const { id } = useParams()
@@ -20,6 +20,42 @@ export default function RenderDevices() {
     }
     const [count, setCount] = useState(0)
     const { SubTitle } = tailwind()
+
+    useEffect(() => {
+        const cart = localStorage.getItem("cart")
+        if (!cart) {
+            localStorage.setItem("cart", "[]")
+        }
+    }, [])
+
+    const handleAddToCart = (item: TItem) => {
+        const cart = localStorage.getItem("cart")
+        if (!cart) return
+        const parsedCart = JSON.parse(cart)
+
+        const isInCart = (item: TItem) => {
+            for (let i = 0; i < parsedCart.length; i++) {
+                if (item.name === parsedCart[i].name) {
+                    return true
+                }
+                return false
+            }
+        }
+
+        if (isInCart(item)) {
+            const itemInLocalstorage = parsedCart.find((e: TItem) => e.name === item.name)
+            const filteredCart = parsedCart.filter((e: TItem) => e.name !== item.name)
+            itemInLocalstorage.count += count
+            filteredCart.push(itemInLocalstorage)
+            const stringedCart = JSON.stringify(filteredCart)
+            localStorage.setItem("cart", stringedCart)
+        } else {
+            parsedCart.push(item)
+            const stringedCart = JSON.stringify(parsedCart)
+            localStorage.setItem("cart", stringedCart)
+        }
+
+    }
 
     return filteredData.map((e, i) => {
         return <div key={i} className={`flex justify-between w-[100%] flex-row-reverse items-center ${i % 2 === 0 ? "flex-row!" : ""}`}>
@@ -36,21 +72,28 @@ export default function RenderDevices() {
                         savePreviousPath()
                     }} className={`${ButtonStyle}`}>
                         SEE PRODUCT
-                    </button> : <div className="flex gap-[16px]">
-                        <div className="flex gap-[16px] bg-[rgba(241,241,241,1)] h-[48px] items-center">
+                    </button> : <div className="flex flex-col gap-[48px]">
+                        <h6 className={`${H6}`}>${e.price.toLocaleString()}</h6>
+                        <div className="flex gap-[16px]">
+                            <div className="flex gap-[16px] bg-[rgba(241,241,241,1)] h-[48px] items-center">
+                                <button onClick={() => {
+                                    count > 0 ? setCount(count - 1) : undefined
+                                }} className={`${SubTitle} text-[rgba(0,0,0,0.25)]! w-[40px]! flex items-center justify-center cursor-pointer h-[100%] text-center hover:text-[rgba(216,125,74,1)]!`}>-</button>
+                                <span className={`${SubTitle} text-[rgba(0,0,0,1)]! w-[10px] text-center hover:text-[rgba(216,125,74,1)]`}>{count}</span>
+                                <button onClick={() => setCount(count + 1)} className={`${SubTitle} text-[rgba(0,0,0,0.25)]! w-[40px]! flex items-center justify-center cursor-pointer h-[100%] text-center hover:text-[rgba(216,125,74,1)]!`}>+</button>
+                            </div>
                             <button onClick={() => {
-                                count > 0 ? setCount(count - 1) : undefined
-                            }} className={`${SubTitle} text-[rgba(0,0,0,0.25)]! w-[40px]! flex items-center justify-center cursor-pointer h-[100%] text-center hover:text-[rgba(216,125,74,1)]!`}>-</button>
-                            <span className={`${SubTitle} text-[rgba(0,0,0,1)]! w-[10px] text-center hover:text-[rgba(216,125,74,1)]`}>{count}</span>
-                            <button onClick={() => setCount(count + 1)} className={`${SubTitle} text-[rgba(0,0,0,0.25)]! w-[40px]! flex items-center justify-center cursor-pointer h-[100%] text-center hover:text-[rgba(216,125,74,1)]!`}>+</button>
+                                handleAddToCart({ name: e.name, count: count, price: e.price, image: e.image.desktop })
+                                setCount(0)
+                            }
+                            } className={`${ButtonStyle}`}>
+                                ADD TO CART
+                            </button>
                         </div>
-                        <button className={`${ButtonStyle}`}>
-                            ADD TO CART
-                        </button>
                     </div>}
                 </div>
             </div>
-        </div>
+        </div >
     })
 }
 
