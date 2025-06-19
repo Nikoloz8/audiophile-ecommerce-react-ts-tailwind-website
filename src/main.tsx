@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import Category from './pages/Category'
+import Details from './pages/Details'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     element: <Category />,
     path:"/category/:category"
+  },
+  {
+    element: <Details />,
+    path: "/details/:category/:id"
   }
 ])
 
