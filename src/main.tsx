@@ -5,19 +5,26 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import Category from './pages/Category'
 import Details from './pages/Details'
+import Layout from './layouts/Layout'
 
 const router = createBrowserRouter([
   {
-    element: <Home />,
-    path: "/"
-  },
-  {
-    element: <Category />,
-    path:"/category/:category"
-  },
-  {
-    element: <Details />,
-    path: "/details/:category/:id"
+    element: <Layout />,
+    path: "/",
+    children: [
+      {
+        element: <Home />,
+        path: "/"
+      },
+      {
+        element: <Category />,
+        path: "/category/:category"
+      },
+      {
+        element: <Details />,
+        path: "/details/:category/:id"
+      }
+    ]
   }
 ])
 

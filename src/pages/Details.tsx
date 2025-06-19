@@ -4,8 +4,6 @@ import Header from "../components/Home/Header";
 import tailwind from "../styles/tailwind";
 import data from "../data.json"
 import CategorysSection from "../components/Home/CategorysSection";
-import SectionThree from "../components/Home/SectionThree";
-import Footer from "../components/Home/Footer";
 
 export default function Details() {
 
@@ -22,11 +20,8 @@ export default function Details() {
     const { P, H3, H5, ButtonStyle } = tailwind()
 
     return (
-        <div className="w-[100%] bg-[rgba(250,250,250,1)] flex-col flex items-center">
-            <div className="flex flex-col items-center w-[100%] bg-[rgba(0,0,0,1)]">
-                <div className="w-[1110px] flex flex-col">
-                    <Header />
-                </div>
+        <>
+            <div className="flex flex-col items-center w-[100%] mt-[-90px] pt-[90px] bg-[rgba(0,0,0,1)]">
             </div>
             <div className="w-[1110px] flex flex-col">
                 <div className="flex flex-col gap-[56px] mt-[80px]">
@@ -73,14 +68,10 @@ export default function Details() {
                         })}
                     </div>
                 </div>
-                <div className="mt-[240px]">
+                <div className="mt-[240px] mb-[160px]">
                     <CategorysSection />
                 </div>
-                <div className="mt-[160px]">
-                    <SectionThree />
-                </div>
             </div>
-                <Footer />
-        </div>
+        </>
     )
 }
