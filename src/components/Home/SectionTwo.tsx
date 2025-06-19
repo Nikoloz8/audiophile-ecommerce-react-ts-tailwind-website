@@ -17,7 +17,7 @@ export default function SectionTwo() {
                             Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
                         </p>
                     </div>
-                    <button className={`${ButtonStyle} bg-[#000000]! text-[#FFFFFF]!`}>
+                    <button className={`${ButtonStyle} bg-[#000000]! z-10 text-[#FFFFFF]!`}>
                         SEE PRODUCT
                     </button>
                 </div>
