@@ -4,9 +4,9 @@ import tailwind from "../../styles/tailwind"
 
 export default function RenderDevices() {
 
+    const { category } = useParams()
     const filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
     const { Overline, P, ButtonStyle, H2 } = tailwind()
-    const { category } = useParams()
 
     return filteredData.map((e, i) => {
         return <div key={i} className={`flex justify-between flex-row-reverse items-center ${i % 2 === 0 ? "flex-row!" : ""}`}>
