@@ -40,7 +40,7 @@ export default function Checkout() {
             <div className="h-[90px] w-[100%] bg-[#000000] mt-[-90px]">
             </div>
             {showSubmit ? <div className="fixed w-[100%] h-[100%]! min-h-[100vh] bg-[rgba(0,0,0,0.5)]! z-20 "></div> : undefined}
-            <div className="flex flex-col max-xl:w-[100%] max-xl:p-[0_24px] p-[0_39px]! w-[1110px] relative mt-[80px] gap-[38px]">
+            <div className="flex flex-col max-xl:w-[100%] max-xl:p-[0_24px]! p-[0_39px]! w-[1110px] relative mt-[80px] gap-[38px]">
 
                 <Submition />
 
