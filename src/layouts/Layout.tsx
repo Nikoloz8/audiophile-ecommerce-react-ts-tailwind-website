@@ -17,7 +17,7 @@ export default function Layout() {
     const [isTablet, setIsTablet] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
 
-    if (body && showCart || showSubmit && body || showMenu && !isMobile && body) {
+    if (body && showCart && !isMobile || showSubmit && !isMobile && body || showMenu && !isMobile && body) {
         body.style.overflow = "hidden"
     } else if (body) {
         body.style.overflow = "visible"

@@ -17,10 +17,10 @@ export default function Submition() {
             <p className={`${P} text-[rgba(0,0,0,0.5)]!`}>You will receive an email confirmation shortly.</p>
         </div>
         {
-            cart && cart[0] ? <div className="flex rounded-[8px] overflow-hidden">
+            cart && cart[0] ? <div className="flex rounded-[8px] max-sm:w-[100%] max-sm:flex max-sm:flex-col overflow-hidden">
                 <div className="bg-[rgba(241,241,241,1)] p-[24px]">
                     <div className="w-[100%] border-b-[1px] border-solid pb-[12px] border-[rgba(0,0,0,0.08)] flex items-center">
-                        <div className="flex items-center gap-[16px]">
+                        <div className="flex items-center max-sm:justify-between max-sm:w-[100%] gap-[16px]">
                             <img src={cart[0].image} className="w-[50px]" alt="" />
                             <div className="flex flex-col">
                                 <h5 className={`${P} font-[700]!`}>{formatName(cart[0].name)}</h5>

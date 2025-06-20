@@ -39,7 +39,7 @@ export default function Header({ showCart, setShowCart, cart, setCart, setShowMe
             <header className={`flex w-[100%] max-xl:p-[32px_39px] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative ${showMenu ? "border-0!" : ""}`}>
                 <HeaderPart setShowMenu={setShowMenu} showMenu={showMenu} showCart={showCart} />
                 <img onClick={() => setShowCart!(!showCart)} src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
-                {showCart ? <div className="absolute flex p-[32px] top-[100px] right-0 z-30! flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px]">
+                {showCart ? <div className="absolute flex p-[32px] top-[100px] right-0 z-30! flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px] max-sm:min-w-auto max-sm:w-[90%]! max-sm:m-[20px]">
                     <div className="flex justify-between w-[100%]">
                         <h6 className={`${H6}`}>CART ({cart ? cart.length : "0"})</h6>
                         <a href="" onClick={() => handleClearCart()} className={`underline ${P} text-[rgba(0,0,0,0.5)]!`}>Remove all</a>
