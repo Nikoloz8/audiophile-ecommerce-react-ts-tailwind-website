@@ -32,7 +32,7 @@ export default function Header({ showCart, setShowCart, cart, setCart, setShowMe
                 <div className={`fixed max-sm:absolute w-[100%] transition-all max-sm:top-[-1200px] top-[-550px] ${showMenu && "top-0!"} duration-1000 left-0`}>
                     <div className="w-[100%] bg-[rgba(0,0,0,1)] h-[90px]"></div>
                     <div className={`bg-[rgba(255,255,255,1)] rounded-[0_0_8px_8px] w-[100%] flex p-[126px_40px_67px_40px]`}>
-                        <CategorysSection />
+                        <CategorysSection setShowMenu={setShowMenu}/>
                     </div>
                 </div>
             </div>

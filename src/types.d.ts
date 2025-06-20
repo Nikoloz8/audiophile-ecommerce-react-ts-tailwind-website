@@ -29,6 +29,7 @@ type TOutlet = Partial<{
     setShowSubmit: React.Dispatch<React.SetStateAction<boolean>>
     isTablet: boolean
     isMobile: boolean
+    setShowMenu: React.Dispatch<React.SetStateAction<boolean>>
 }>
 
 type TForm = {

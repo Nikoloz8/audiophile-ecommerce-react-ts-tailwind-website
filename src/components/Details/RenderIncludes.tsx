@@ -10,7 +10,7 @@ export default function RenderIncludes() {
     const { H3, P } = tailwind()
 
     return (
-        <div className="flex flex-col gap-[32px]">
+        <div className="flex flex-col gap-[32px] max-lg:flex-row max-lg:w-[100%] max-lg:justify-between max-lg:pr-[150px] max-md:p-0 max-sm:flex-col max-lg:mt-[150px]">
             <h3 className={`${H3}`}>IN THE BOX</h3>
             <ul>
                 {filteredData?.includes.map((e, i) => {

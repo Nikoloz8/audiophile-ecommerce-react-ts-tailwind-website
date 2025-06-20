@@ -23,8 +23,6 @@ export default function Layout() {
         body.style.overflow = "visible"
     }
 
-
-
     useEffect(() => {
         setIsTablet(window.innerWidth < 1024 && window.innerWidth > 600)
         setIsMobile(window.innerWidth < 600)
@@ -40,7 +38,6 @@ export default function Layout() {
 
     const isCheckout = useLocation().pathname.includes("checkout")
 
-
     return (
         <div className="w-[100%] bg-[rgba(250,250,250,1)] flex-col flex items-center">            {showCart || showMenu ? <div onClick={() => {
             setShowCart(false)
@@ -51,7 +48,7 @@ export default function Layout() {
                     <Header setShowMenu={setShowMenu} showMenu={showMenu} showCart={showCart} setShowCart={setShowCart} cart={cart} setCart={setCart} />
                 </div>
             </div>
-            <Outlet context={{ cart, showSubmit, setShowSubmit, isTablet, isMobile }} />
+            <Outlet context={{ cart, showSubmit, setShowSubmit, isTablet, isMobile, setShowMenu }} />
             {!isCheckout && <div className='w-[1110px] max-xl:w-[100%] max-xl:p-[0_39px] max-sm:p-[0_24px]'>
                 <SectionThree isMobile={isMobile} isTablet={isTablet} />
             </div>}
