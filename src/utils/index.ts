@@ -56,8 +56,12 @@ export default function index({ setCart, cart, count }: TFunctions) {
             const stringedCart = JSON.stringify(parsedCart)
             localStorage.setItem("cart", stringedCart)
         }
+    }
+
+    const getPreviousPath = () => {
+        return localStorage.getItem("previousPath")
 
     }
 
-    return { handleGetTotal, handleClearCart, formatName, handleCountChange, handleAddToCart }
+    return { handleGetTotal, handleClearCart, formatName, handleCountChange, handleAddToCart, getPreviousPath }
 }

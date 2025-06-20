@@ -5,17 +5,15 @@ import data from "../data.json"
 import CategorysSection from "../components/Home/CategorysSection";
 import RenderIncludes from "../components/Details/RenderIncludes";
 import Gallery from "../components/Details/Gallery";
+import index from "../utils";
 
 export default function Details() {
 
     const navigate = useNavigate()
-    const getPreviousPath = () => {
-        return localStorage.getItem("previousPath")
-
-    }
     const { id } = useParams()
     const filteredData = data.find((e) => e.id === Number(id))
     const { P, H3 } = tailwind()
+    const { getPreviousPath } = index({})
 
     return (
         <>
