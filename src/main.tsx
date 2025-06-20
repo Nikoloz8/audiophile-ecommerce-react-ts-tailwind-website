@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Category from './pages/Category'
 import Details from './pages/Details'
 import Layout from './layouts/Layout'
+import Checkout from './pages/Checkout'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         element: <Details />,
         path: "/details/:category/:id"
+      },
+      {
+        element: <Checkout />,
+        path: "/checkout"
       }
     ]
   }
