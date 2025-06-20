@@ -32,9 +32,7 @@ export default function Header({ showCart, setShowCart, setCart, setShowMenu, sh
             </div>
             <header className={`flex w-[100%] max-xl:p-[32px_39px] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative ${showMenu ? "border-0!" : ""}`}>
                 <HeaderPart setShowMenu={setShowMenu} showMenu={showMenu} showCart={showCart} />
-
-                <CartAndIndicator cart={cart} showCart={showCart} setShowCart={setShowCart}/>
-
+                <CartAndIndicator cart={cart} showCart={showCart} setShowCart={setShowCart} />
                 <Cart showCart={showCart} setShowCart={setShowCart} setCart={setCart} cart={cart} />
             </header>
         </>

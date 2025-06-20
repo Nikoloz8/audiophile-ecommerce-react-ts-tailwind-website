@@ -48,7 +48,7 @@ export default function Layout() {
                     <Header setShowMenu={setShowMenu} showMenu={showMenu} showCart={showCart} setShowCart={setShowCart} cart={cart} setCart={setCart} />
                 </div>
             </div>
-            <Outlet context={{ cart, showSubmit, setShowSubmit, isTablet, isMobile, setShowMenu }} />
+            <Outlet context={{ cart, showSubmit, setCart, setShowSubmit, isTablet, isMobile, setShowMenu }} />
             {!isCheckout && <div className='w-[1110px] max-xl:w-[100%] max-xl:p-[0_39px] max-sm:p-[0_24px]'>
                 <SectionThree isMobile={isMobile} isTablet={isTablet} />
             </div>}

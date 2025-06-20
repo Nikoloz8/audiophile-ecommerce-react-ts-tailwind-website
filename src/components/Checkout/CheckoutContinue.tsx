@@ -9,8 +9,8 @@ export default function CheckoutContinue() {
 
     const { P, H6, ButtonStyle } = tailwind()
     const { watch, setError, clearErrors } = useContext(CheckoutContext)
-    const { cart, setShowSubmit } = useOutletContext<TOutlet>()
-    const { handleGetTotal, formatName } = index({ cart })
+    const { cart, setShowSubmit, setCart } = useOutletContext<TOutlet>()
+    const { handleGetTotal, formatName, handleClearCart } = index({ cart, setCart })
 
     return (
         <section className="flex p-[32px] flex-col gap-[32px] max-lg:w-[100%] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px] max-sm:min-w-auto">
@@ -58,6 +58,7 @@ export default function CheckoutContinue() {
                             clearErrors("selected")
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             setShowSubmit!(true)
+                            handleClearCart()
                         }
                     }
                     } className={`${ButtonStyle} mt-[8px]`}>

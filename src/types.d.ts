@@ -30,6 +30,7 @@ type TOutlet = Partial<{
     isTablet: boolean
     isMobile: boolean
     setShowMenu: React.Dispatch<React.SetStateAction<boolean>>
+    setCart: React.Dispatch<React.SetStateAction<TItem[]>>
 }>
 
 type TForm = {
