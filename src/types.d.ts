@@ -12,3 +12,9 @@ type TFunctions = Partial<{
     count: number
 }>
 
+type THeader = {
+    showCart: boolean
+    setShowCart: React.Dispatch<React.SetStateAction<boolean>>
+    cart: TItem[]
+    setCart: React.Dispatch<React.SetStateAction<TItem[]>>
+}

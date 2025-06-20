@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import tailwind from "../../styles/tailwind"
 import HeaderPart from "./HeaderPart"
 import index from "../../utils"
 import { useNavigate } from "react-router-dom"
 
-export default function Header({ showCart, setShowCart }: { showCart: boolean, setShowCart: React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function Header({ showCart, setShowCart, cart, setCart }: THeader) {
 
-    const [cart, setCart] = useState<TItem[]>([])
     const { H6, P, SubTitle, ButtonStyle } = tailwind()
 
     useEffect(() => {

@@ -7,6 +7,7 @@ import { useState } from 'react'
 export default function Layout() {
 
     const [showCart, setShowCart] = useState(false)
+    const [cart, setCart] = useState<TItem[]>([])
 
     const body = document.querySelector("body")
 
@@ -22,13 +23,13 @@ export default function Layout() {
         <div className="w-[100%] bg-[rgba(250,250,250,1)] flex-col flex items-center">            {showCart ? <div onClick={() => setShowCart(false)} className="fixed w-[100%] h-[100%]! min-h-[100vh] bg-[rgba(0,0,0,0.5)]! z-20 "></div> : undefined}
             <div className="flex flex-col items-center w-[100%] bg-transparent z-30">
                 <div className="w-[1110px] flex flex-col">
-                    <Header showCart={showCart} setShowCart={setShowCart} />
+                    <Header showCart={showCart} setShowCart={setShowCart} cart={cart} setCart={setCart} />
                 </div>
             </div>
-            <Outlet />
-            <div className='w-[1110px]'>
-                {!isCheckout && <SectionThree />}
-            </div>
+            <Outlet context={{ cart }} />
+            {!isCheckout && <div className='w-[1110px]'>
+                <SectionThree />
+            </div>}
             <Footer />
         </div>
     )
