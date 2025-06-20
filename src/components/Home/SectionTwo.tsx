@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
 
 export default function SectionTwo() {
 
     const { H1, P, ButtonStyle, H4 } = tailwind()
+    const navigate= useNavigate()
 
     return (
         <div className="flex flex-col gap-[48px] mb-[200px]">
@@ -17,7 +19,7 @@ export default function SectionTwo() {
                             Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
                         </p>
                     </div>
-                    <button className={`${ButtonStyle} bg-[#000000]! z-10 text-[#FFFFFF]!`}>
+                    <button onClick={() => navigate("/details/speakers/6")} className={`${ButtonStyle} bg-[#000000]! z-10 text-[#FFFFFF]!`}>
                         SEE PRODUCT
                     </button>
                 </div>
@@ -25,14 +27,14 @@ export default function SectionTwo() {
             <div className="w-[100%] rounded-[8px] bg-[url('/images/home/desktop/image-speaker-zx7.jpg')] bg-center bg-cover bg-no-repeat p-[101px_95px]" >
                 <div className="flex flex-col gap-[32px] items-start">
                     <h4 className={`${H4}`}>ZX7 SPEAKER</h4>
-                    <button className={`${ButtonStyle} bg-transparent! border-[1px] border-solid border-[#000000] text-[#000000]!`}>SEE PRODUCT</button>
+                    <button onClick={() => navigate("/details/speakers/5")} className={`${ButtonStyle} bg-transparent! border-[1px] border-solid border-[#000000] text-[#000000]!`}>SEE PRODUCT</button>
                 </div>
             </div>
             <div className="flex justify-between">
                 <img src="/images/home/desktop/image-earphones-yx1.jpg" className="rounded-[8px] w-[540px]" alt="" />
                 <div className="w-[540px] p-[101px_95px] flex flex-col gap-[32px] items-start bg-[rgba(241,241,241,1)] rounded-[8px]">
                     <h4 className={`${H4}`}>YX1 EARPHONES</h4>
-                    <button className={`${ButtonStyle} bg-transparent! border-[1px] border-solid border-[#000000] text-[#000000]!`}>SEE PRODUCT</button>
+                    <button onClick={() => navigate("/details/earphones/1")} className={`${ButtonStyle} bg-transparent! border-[1px] border-solid border-[#000000] text-[#000000]!`}>SEE PRODUCT</button>
                 </div>
             </div>
         </div>)

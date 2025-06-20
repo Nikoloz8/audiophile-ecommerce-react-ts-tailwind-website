@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
 
 export default function SectionOne() {
 
     const {Overline, H1, P, ButtonStyle} = tailwind()
+    const navigate = useNavigate()
 
     return (
         <section className="flex flex-col gap-[40px] max-w-[400px] items-start">
@@ -16,7 +18,7 @@ export default function SectionOne() {
                     Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                 </p>
             </div>
-            <button className={`${ButtonStyle}`}>
+            <button onClick={() => navigate('/details/headphones/4')} className={`${ButtonStyle}`}>
                 SEE PRODUCT
             </button>
         </section>)
