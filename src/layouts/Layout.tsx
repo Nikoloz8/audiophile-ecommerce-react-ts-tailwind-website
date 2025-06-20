@@ -8,10 +8,11 @@ export default function Layout() {
 
     const [showCart, setShowCart] = useState(false)
     const [cart, setCart] = useState<TItem[]>([])
+    const [showSubmit, setShowSubmit] = useState(false)
 
     const body = document.querySelector("body")
 
-    if (body && showCart) {
+    if (body && showCart || showSubmit && body) {
         body.style.overflow = "hidden"
     } else if (body) {
         body.style.overflow = "visible"
@@ -26,7 +27,7 @@ export default function Layout() {
                     <Header showCart={showCart} setShowCart={setShowCart} cart={cart} setCart={setCart} />
                 </div>
             </div>
-            <Outlet context={{ cart }} />
+            <Outlet context={{ cart, showSubmit, setShowSubmit }} />
             {!isCheckout && <div className='w-[1110px]'>
                 <SectionThree />
             </div>}

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form"
 export default function Checkout() {
 
     const navigate = useNavigate()
-    const { cart } = useOutletContext<{ cart: TItem[] }>()
+    const { cart, showSubmit, setShowSubmit } = useOutletContext<TOutlet>()
     const { getPreviousPath, formatName, handleGetTotal } = index({ cart })
     const { P, H3, SubTitle, labelStyle, inputStyle, H6, ButtonStyle } = tailwind()
 
@@ -25,17 +25,48 @@ export default function Checkout() {
         }
     })
 
-
-
-    console.log(watch())
-
     const onSubmit = () => { }
 
     return (
         <>
             <div className="h-[90px] w-[100%] bg-[#000000] mt-[-90px]">
             </div>
-            <div className="flex flex-col w-[1110px] mt-[80px] gap-[38px]">
+            {showSubmit ? <div className="fixed w-[100%] h-[100%]! min-h-[100vh] bg-[rgba(0,0,0,0.5)]! z-20 "></div> : undefined}
+            <div className="flex flex-col w-[1110px] relative mt-[80px] gap-[38px]">
+                {showSubmit ? <div className="absolute bg-[#FFFFFF] z-20 items-start flex flex-col gap-[32px] rounded-[8px] p-[48px] top-[-45px]! left-1/2 -translate-x-1/2">
+                    <img src="/images/checkout/icon-order-confirmation.svg" alt="" />
+                    <div className="flex flex-col gap-[24px]">
+                        <h3 className={`${H3}`}>THANK YOU FOR YOUR ORDER</h3>
+                        <p className={`${P} text-[rgba(0,0,0,0.5)]!`}>You will receive an email confirmation shortly.</p>
+                    </div>
+                    {cart[0] ? <div className="flex rounded-[8px] overflow-hidden">
+                        <div className="bg-[rgba(241,241,241,1)] p-[24px]">
+                            <div className="w-[100%] border-b-[1px] border-solid pb-[12px] border-[rgba(0,0,0,0.08)] flex items-center">
+                                <div className="flex items-center gap-[16px]">
+                                    <img src={cart[0].image} className="w-[50px]" alt="" />
+                                    <div className="flex flex-col">
+                                        <h5 className={`${P} font-[700]!`}>{formatName(cart[0].name)}</h5>
+                                        <h5 className={`${P} text-[1.4rem]! font-[700] text-[rgba(0,0,0,0.5)]!`}>${cart[0].price.toLocaleString()}</h5>
+                                    </div>
+                                    <div className="flex h-[51px] items-start">
+                                        <h5 className={`${P} font-[700] text-[rgba(0,0,0,0.5)]!`}>x{cart[0].count}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className={`${labelStyle} justify-center! mt-[12px] text-[rgba(0,0,0,0.5)]!`}>and {cart.length - 1} other item(s)</h5>
+                        </div>
+                        <div className="bg-[#000000] p-[41px_65px_42px_32px] flex flex-col gap-[8px]">
+                            <h5 className={`${P} text-[rgba(255,255,255,0.5)]!`}>GRAND TOTAL</h5>
+                            <h6 className={`${H6} text-[#FFFFFF]!`}>${handleGetTotal().toLocaleString()}</h6>
+                        </div>
+                    </div> : ""}
+                    <button type="submit" onClick={() =>{
+                        setShowSubmit(false)
+                        navigate("/")
+                    }} className={`${ButtonStyle} w-[100%]! mt-[14px]`}>
+                        BACK TO HOME
+                    </button>
+                </div> : ""}
                 <div className="flex justify-start w-[100%]">
                     <a href="" onClick={() => navigate(`${getPreviousPath()}`)} className={`cursor-pointer ${P} text-[rgba(0,0,0,0.5)]!`}>Go Back</a>
                 </div>
@@ -177,10 +208,10 @@ export default function Checkout() {
                                                 required: "Required"
                                             })} type="text" id="EMoneyPin" className={`${inputStyle} ${errors.EMoneyPin && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                         </div>
-                                    </div> : <div className="flex gap-[32px] items-center">
+                                    </div> : watch().selected === 2 ? <div className="flex gap-[32px] items-center">
                                         <img src="/images/checkout/icon-cash-on-delivery.svg" alt="" />
                                         <p className={`${P} text-[rgba(0,0,0,0.5)]!`}>The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your residence. Just make sure your address is correct so that your order will not be cancelled.</p>
-                                    </div>}
+                                    </div> : undefined}
                                 </div>
                             </section>
                         </div>
@@ -222,8 +253,17 @@ export default function Checkout() {
                                         <h6 className={`${P} text-[rgba(0,0,0,0.5)]!`}>GRAND TOTAL</h6>
                                         <h6 className={`${H6} text-[rgba(216,125,74,1)]!`}>${(handleGetTotal() + 50).toLocaleString()}</h6>
                                     </div>
-                                    <button type="submit" onClick={() => watch().selected === 0 ? setError("selected", { type: "manual", message: "Required" }) : clearErrors("selected")} className={`${ButtonStyle} mt-[8px]`}>
-                                        CONTINUE & PAY  
+                                    <button type="submit" onClick={() => {
+                                        if (watch().selected === 0) {
+                                            setError("selected", { type: "manual", message: "Required" })
+                                        } else {
+                                            clearErrors("selected")
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                            setShowSubmit(true)
+                                        }
+                                    }
+                                    } className={`${ButtonStyle} mt-[8px]`}>
+                                        CONTINUE & PAY
                                     </button>
                                 </div>
                             </div>

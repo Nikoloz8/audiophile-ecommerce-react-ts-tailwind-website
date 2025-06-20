@@ -18,3 +18,9 @@ type THeader = {
     cart: TItem[]
     setCart: React.Dispatch<React.SetStateAction<TItem[]>>
 }
+
+type TOutlet = {
+    cart: TItem[]
+    showSubmit: boolean,
+    setShowSubmit: React.Dispatch<React.SetStateAction<boolean>>
+}
