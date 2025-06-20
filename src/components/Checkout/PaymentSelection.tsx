@@ -19,8 +19,8 @@ export default function PaymentSelection() {
                     )}
                 </h4>
                 <div className="w-[100%] flex justify-end">
-                    <div className="flex flex-col gap-[16px] items-end w-[100%]">
-                        <div onClick={() => setValue("selected", 1)} className={`${inputStyle} cursor-pointer w-[48.5%]! flex items-center gap-[16px] ${watch().selected == 1 && "border-[rgba(216,125,74,1)]!"} hover:border-[rgba(216,125,74,1)]!`}>
+                    <div className="flex flex-col gap-[16px] items-end max-sm:items-start w-[100%]">
+                        <div onClick={() => setValue("selected", 1)} className={`${inputStyle} cursor-pointer w-[48.5%]! max-sm:w-[100%]! flex items-center gap-[16px] ${watch().selected == 1 && "border-[rgba(216,125,74,1)]!"} hover:border-[rgba(216,125,74,1)]!`}>
                             <div className={`w-[20px] h-[20px] rounded-[100%] border-solid flex items-center justify-center border-[rgba(207,207,207,1)] border-[1px] border-solid"}`}>
                                 {watch().selected == 1 && <div className="w-[10px] h-[10px] rounded-[100%] bg-[rgba(216,125,74,1)]"></div>}
                             </div>
@@ -30,7 +30,7 @@ export default function PaymentSelection() {
                             clearErrors(["EMoneyNumber", "EMoneyPin"])
                             setValue("EMoneyNumber", "")
                             setValue("EMoneyPin", "")
-                        }} className={`${inputStyle} w-[48.5%]! cursor-pointer flex items-center gap-[16px] ${watch().selected == 2 && "border-[rgba(216,125,74,1)]!"} hover:border-[rgba(216,125,74,1)]!`}>
+                        }} className={`${inputStyle} w-[48.5%]! max-sm:w-[100%]! cursor-pointer flex items-center gap-[16px] ${watch().selected == 2 && "border-[rgba(216,125,74,1)]!"} hover:border-[rgba(216,125,74,1)]!`}>
                             <div className="w-[20px] h-[20px] rounded-[100%] border-[1px] border-solid border-[rgba(207,207,207,1)] flex items-center justify-center">
                                 {watch().selected == 2 && <div className="w-[10px] h-[10px] rounded-[100%] bg-[rgba(216,125,74,1)]"></div>}
                             </div>

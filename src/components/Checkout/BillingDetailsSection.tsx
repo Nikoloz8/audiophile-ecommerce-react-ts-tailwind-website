@@ -12,7 +12,7 @@ export default function BillingDetailsSection() {
         <section className="mt-[41px] flex flex-col gap-[16px]">
             <h5 className={`${SubTitle}`}>BILLING DETAILS</h5>
             <div className="flex flex-col gap-[24px]">
-                <div className="flex gap-[16px]">
+                <div className="flex gap-[16px] max-sm:flex-col max-sm:gap-[24px]">
                     <div className="flex flex-col gap-[9px] w-[100%]">
                         <label className={`${labelStyle} ${errors.name && "text-[rgba(205,44,44,1)]!"}`} htmlFor="name">
                             Name
@@ -36,7 +36,7 @@ export default function BillingDetailsSection() {
                         })} />
                     </div>
                 </div>
-                <div className="flex flex-col gap-[9px]  w-[48.5%]">
+                <div className="flex flex-col gap-[9px] max-sm:w-[100%] w-[48.5%]">
                     <label className={`${labelStyle} ${errors.phone && "text-[rgba(205,44,44,1)]!"}`} htmlFor="number">
                         Phone Number
                         {errors.phone && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.phone.message}</p>}

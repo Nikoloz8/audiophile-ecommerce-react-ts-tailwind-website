@@ -20,7 +20,7 @@ export default function ShippingInfoSection() {
                 })} type="text" id="address" className={`${inputStyle} ${errors.address && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
             </div>
             <div className="flex flex-col gap-[24px] mt-[8px]">
-                <div className="flex gap-[16px]">
+                <div className="flex gap-[16px] max-sm:flex-col">
                     <div className="flex flex-col gap-[9px] w-[100%]">
                         <label className={`${labelStyle} ${errors.zipCode && "text-[rgba(205,44,44,1)]!"}`} htmlFor="zip">
                             ZIP Code
@@ -40,7 +40,7 @@ export default function ShippingInfoSection() {
                         })} type="text" id="city" className={`${inputStyle} ${errors.city && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                     </div>
                 </div>
-                <div className="flex flex-col gap-[9px] w-[48.5%]">
+                <div className="flex flex-col gap-[9px] max-sm:w-[100%] w-[48.5%]">
                     <label className={`${labelStyle} ${errors.country && "text-[rgba(205,44,44,1)]!"}`} htmlFor="country">
                         Country
                         {errors.country && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.country.message}</p>}

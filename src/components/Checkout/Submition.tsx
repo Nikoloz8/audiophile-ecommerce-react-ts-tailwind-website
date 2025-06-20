@@ -10,14 +10,14 @@ export default function Submition() {
     const { cart, showSubmit, setShowSubmit } = useOutletContext<TOutlet>()
     const { formatName, handleGetTotal } = index({ cart })
 
-    return showSubmit ? <div className="absolute bg-[#FFFFFF] z-20 items-start flex flex-col gap-[32px] rounded-[8px] p-[48px] top-[-45px]! left-1/2 -translate-x-1/2">
+    return showSubmit ? <div className="absolute bg-[#FFFFFF] max-md:w-[80%] z-20 items-start flex flex-col gap-[32px] rounded-[8px] p-[48px] top-[-100px] left-1/2 -translate-x-1/2">
         < img src="/images/checkout/icon-order-confirmation.svg" alt="" />
         <div className="flex flex-col gap-[24px]">
             <h3 className={`${H3}`}>THANK YOU FOR YOUR ORDER</h3>
             <p className={`${P} text-[rgba(0,0,0,0.5)]!`}>You will receive an email confirmation shortly.</p>
         </div>
         {
-            cart ? <div className="flex rounded-[8px] overflow-hidden">
+            cart && cart[0] ? <div className="flex rounded-[8px] overflow-hidden">
                 <div className="bg-[rgba(241,241,241,1)] p-[24px]">
                     <div className="w-[100%] border-b-[1px] border-solid pb-[12px] border-[rgba(0,0,0,0.08)] flex items-center">
                         <div className="flex items-center gap-[16px]">

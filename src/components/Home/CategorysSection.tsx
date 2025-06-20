@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
 import type { TOutlet } from "../../types"
 
-export default function CategorysSection({ isMobile, isTablet, setShowMenu }: TOutlet) {
+export default function CategorysSection({ setShowMenu }: TOutlet) {
 
     const navCategorys = ["headphones", "speakers", "earphones"]
     const { H6, SubTitle } = tailwind()

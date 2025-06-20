@@ -13,7 +13,7 @@ export default function CheckoutContinue() {
     const { handleGetTotal, formatName } = index({ cart })
 
     return (
-        <section className="flex p-[32px] flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px]">
+        <section className="flex p-[32px] flex-col gap-[32px] max-lg:w-[100%] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px] max-sm:min-w-auto">
             <div className="flex justify-between w-[100%]">
                 <h6 className={`${H6}`}>SUMMARY</h6>
             </div>

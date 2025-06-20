@@ -1,14 +1,12 @@
 import tailwind from "../styles/tailwind"
-import { useOutletContext, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import CategorysSection from "../components/Home/CategorysSection"
 import RenderDevices from "../components/Category/RenderDevices"
-import type { TOutlet } from "../types"
 
 export default function Category() {
 
     const { H2 } = tailwind()
     const { category } = useParams()
-    const { isMobile, isTablet } = useOutletContext<TOutlet>()
 
     return (
         <>
@@ -20,7 +18,7 @@ export default function Category() {
             <div className="w-[1110px] max-xl:w-[100%] p-[0_39px] max-sm:p-[0_24px] flex flex-col gap-[160px] mt-[160px] max-sm:mt-[64px] max-sm:gap-[120px]">
                 <RenderDevices />
                 <div className="mt-[70px] mb-[160px]">
-                    <CategorysSection isMobile={isMobile} isTablet={isTablet}/>
+                    <CategorysSection />
                 </div>
             </div>
         </>
