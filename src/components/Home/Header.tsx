@@ -3,6 +3,7 @@ import HeaderPart from "./HeaderPart"
 import type { THeader } from "../../types"
 import CategorysSection from "./CategorysSection"
 import Cart from "./Cart"
+import tailwind from "../../styles/tailwind"
 
 export default function Header({ showCart, setShowCart, setCart, setShowMenu, showMenu, cart }: THeader) {
 
@@ -19,6 +20,7 @@ export default function Header({ showCart, setShowCart, setCart, setShowMenu, sh
         }
     }, [])
 
+    const { P } = tailwind()
 
     return (
         <>
@@ -32,7 +34,10 @@ export default function Header({ showCart, setShowCart, setCart, setShowMenu, sh
             </div>
             <header className={`flex w-[100%] max-xl:p-[32px_39px] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative ${showMenu ? "border-0!" : ""}`}>
                 <HeaderPart setShowMenu={setShowMenu} showMenu={showMenu} showCart={showCart} />
-                <img onClick={() => setShowCart!(!showCart)} src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
+                <div className="flex">
+                    <img onClick={() => setShowCart!(!showCart)} src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
+                    {cart?.length ? <div className={`bg-[rgba(216,125,74,1)]! rounded-[100%] w-[20px] h-[20px] flex items-center justify-center ${cart.length < 0 ? "hidden" : ""} text-[#FFFFFF]! relative top-[-10px] left-[-5px] ${P}`}>{cart?.length}</div> : undefined}
+                </div>
                 <Cart showCart={showCart} setShowCart={setShowCart} setCart={setCart} cart={cart} />
             </header>
         </>
