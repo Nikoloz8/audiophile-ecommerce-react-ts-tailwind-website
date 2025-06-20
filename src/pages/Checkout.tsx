@@ -52,7 +52,7 @@ export default function Checkout() {
                                                 Name
                                                 {errors.name && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.name.message}</p>}
                                             </label>
-                                            <input type="text" id="name" className={`${inputStyle} ${errors.name && "border-[2px]! border-[rgba(205,44,44,1)]!"} `} {...register("name", {
+                                            <input placeholder="Alexei Ward" type="text" id="name" className={`${inputStyle} ${errors.name && "border-[2px]! border-[rgba(205,44,44,1)]!"} `} {...register("name", {
                                                 required: "Required"
                                             })} />
                                         </div>
@@ -61,7 +61,7 @@ export default function Checkout() {
                                                 Email Address
                                                 {errors.email && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.email.message}</p>}
                                             </label>
-                                            <input type="text" id="email" className={`${inputStyle} ${errors.email && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} {...register("email", {
+                                            <input placeholder="alexei@mail.com" type="text" id="email" className={`${inputStyle} ${errors.email && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} {...register("email", {
                                                 required: "Required",
                                                 pattern: {
                                                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -75,7 +75,7 @@ export default function Checkout() {
                                             Phone Number
                                             {errors.phone && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.phone.message}</p>}
                                         </label>
-                                        <input {...register("phone", {
+                                        <input placeholder="+1 202-555-0136" {...register("phone", {
                                             required: "Required"
                                         })} type="text" id="number" className={`${inputStyle} ${errors.phone && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                     </div>
@@ -88,7 +88,7 @@ export default function Checkout() {
                                         Address
                                         {errors.address && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.address.message}</p>}
                                     </label>
-                                    <input {...register("address", {
+                                    <input placeholder="1137 Williams Avenue" {...register("address", {
                                         required: "Required"
                                     })} type="text" id="address" className={`${inputStyle} ${errors.address && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                 </div>
@@ -99,7 +99,7 @@ export default function Checkout() {
                                                 ZIP Code
                                                 {errors.zipCode && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.zipCode.message}</p>}
                                             </label>
-                                            <input {...register("zipCode", {
+                                            <input placeholder="10001" {...register("zipCode", {
                                                 required: "Required"
                                             })} type="text" id="zip" className={`${inputStyle} ${errors.zipCode && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                         </div>
@@ -108,7 +108,7 @@ export default function Checkout() {
                                                 City
                                                 {errors.city && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.city.message}</p>}
                                             </label>
-                                            <input {...register("city", {
+                                            <input placeholder="New York" {...register("city", {
                                                 required: "Required"
                                             })} type="text" id="city" className={`${inputStyle} ${errors.city && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                         </div>
@@ -118,7 +118,7 @@ export default function Checkout() {
                                             Country
                                             {errors.country && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.country.message}</p>}
                                         </label>
-                                        <input {...register("country", {
+                                        <input placeholder="United States" {...register("country", {
                                             required: "Required"
                                         })} type="text" id="country" className={`${inputStyle} ${errors.country && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                     </div>
@@ -164,7 +164,7 @@ export default function Checkout() {
                                                 e-Money Number
                                                 {errors.EMoneyNumber && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.EMoneyNumber.message}</p>}
                                             </label>
-                                            <input {...register("EMoneyNumber", {
+                                            <input placeholder="238521993" {...register("EMoneyNumber", {
                                                 required: "Required"
                                             })} type="text" id="EMoneyNum" className={`${inputStyle} ${errors.EMoneyNumber && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                         </div>
@@ -173,7 +173,7 @@ export default function Checkout() {
                                                 e-Money PIN
                                                 {errors.EMoneyPin && <p className="font-[400] text-[1.2rem] leading-[100%] tracking-[-0.21px]">{errors.EMoneyPin.message}</p>}
                                             </label>
-                                            <input {...register("EMoneyPin", {
+                                            <input placeholder="6891" {...register("EMoneyPin", {
                                                 required: "Required"
                                             })} type="text" id="EMoneyPin" className={`${inputStyle} ${errors.EMoneyPin && "border-[2px]! border-[rgba(205,44,44,1)]!"}`} />
                                         </div>
@@ -223,9 +223,8 @@ export default function Checkout() {
                                         <h6 className={`${H6} text-[rgba(216,125,74,1)]!`}>${(handleGetTotal() + 50).toLocaleString()}</h6>
                                     </div>
                                     <button type="submit" onClick={() => watch().selected === 0 ? setError("selected", { type: "manual", message: "Required" }) : clearErrors("selected")} className={`${ButtonStyle} mt-[8px]`}>
-                                        CONTINUE
+                                        CONTINUE & PAY  
                                     </button>
-
                                 </div>
                             </div>
                         </section>
