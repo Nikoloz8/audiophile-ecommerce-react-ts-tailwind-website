@@ -13,18 +13,23 @@ type TFunctions = Partial<{
     count: number
 }>
 
-type THeader = {
+type THeader = Partial<{
     showCart: boolean
     setShowCart: React.Dispatch<React.SetStateAction<boolean>>
     cart: TItem[]
     setCart: React.Dispatch<React.SetStateAction<TItem[]>>
-}
+    showMenu: boolean
+    setShowMenu: React.Dispatch<React.SetStateAction<boolean>>
+    isFooter: boolean
+}>
 
-type TOutlet = {
+type TOutlet = Partial<{
     cart: TItem[]
     showSubmit: boolean,
     setShowSubmit: React.Dispatch<React.SetStateAction<boolean>>
-}
+    isTablet: boolean
+    isMobile: boolean
+}>
 
 type TForm = {
     name: string;

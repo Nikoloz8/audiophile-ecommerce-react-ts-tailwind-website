@@ -1,6 +1,6 @@
 
 export default function tailwind() {
-    const H1 = "text-[5.6rem] font-[700] leading-[56px] tracking-[2px] text-[rgba(0,0,0,1)]"
+    const H1 = "text-[5.6rem] max-sm:text-[3.6rem]! font-[700] leading-[56px] tracking-[2px] text-[rgba(0,0,0,1)]"
     const H2 = "text-[4rem] font-[700] leading-[44px] tracking-[1.43px] text-[rgba(0,0,0,1)]"
     const H3 = "text-[3.2rem] font-[700] leading-[36px] tracking-[1.14px] text-[rgba(0,0,0,1)]"
     const H4 = "text-[2.8rem] font-[700] leading-[100%] tracking-[2px] text-[rgba(0,0,0,1)]"

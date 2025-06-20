@@ -14,14 +14,14 @@ export default function RenderDevices() {
     const location = useLocation().pathname
     const { handleAddToCart } = index({ count })
     
-    
-    let filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
     const isDetails = useLocation().pathname.includes("details")
+    let filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
+    
     if (isDetails) {
         const { id } = useParams()
         filteredData = data.filter((e) => e.id === Number(id))
     }
-    
+
     const savePreviousPath = () => {
         localStorage.setItem("previousPath", location)
     }

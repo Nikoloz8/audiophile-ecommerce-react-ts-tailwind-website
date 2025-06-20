@@ -7,14 +7,14 @@ export default function SectionOne() {
     const navigate = useNavigate()
 
     return (
-        <section className="flex flex-col gap-[40px] max-w-[400px] items-start">
-            <div className="flex flex-col gap-[24px]">
+        <section className="flex flex-col gap-[40px] max-lg:items-center! max-w-[400px] items-start">
+            <div className="flex flex-col gap-[24px] max-lg:items-center!">
                 <h4 className={`${Overline} text-[rgba(255,255,255,0.5)]!`}>NEW PRODUCT</h4>
-                <h1 className={`${H1} text-[#FFFFFF]!`}>
+                <h1 className={`${H1} text-[#FFFFFF]! max-lg:text-center`}>
                     XX99 MARK II
                     HEADPHONES
                 </h1>
-                <p className={`${P} text-[rgba(255,255,255,0.75)]! max-w-[350px]`}>
+                <p className={`${P} text-[rgba(255,255,255,0.75)]! max-w-[350px] max-lg:text-center`}>
                     Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                 </p>
             </div>
