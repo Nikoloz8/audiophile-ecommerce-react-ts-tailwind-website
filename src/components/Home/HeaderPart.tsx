@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
 
-export default function HeaderPart() {
+export default function HeaderPart({ showCart }: Partial<{ showCart: boolean }>) {
 
     const navHeader = ["home", "headphones", "speakers", "earphones"]
     const navigate = useNavigate()
@@ -14,7 +14,7 @@ export default function HeaderPart() {
                 <ul className="flex gap-[32px]">
                     {navHeader.map((e, i) => {
                         return <li onClick={() => {
-                            e === "home" ? navigate("/") : navigate(`/category/${e}`)
+                            e === "home" && !showCart ? navigate("/") : !showCart ? navigate(`/category/${e}`) : undefined
                         }} className={`${SubTitle} tracking-[2px] text-[rgba(255,255,255,1)] cursor-pointer`} key={i}>{e.toUpperCase()}</li>
                     })}
                 </ul>

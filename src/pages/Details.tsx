@@ -1,19 +1,17 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RenderDevices from "../components/Category/RenderDevices";
 import tailwind from "../styles/tailwind";
 import data from "../data.json"
 import CategorysSection from "../components/Home/CategorysSection";
 import RenderIncludes from "../components/Details/RenderIncludes";
 import Gallery from "../components/Details/Gallery";
-import index from "../utils";
+import GoBackButton from "../components/Checkout/GoBackButton";
 
 export default function Details() {
 
-    const navigate = useNavigate()
     const { id } = useParams()
     const filteredData = data.find((e) => e.id === Number(id))
     const { P, H3 } = tailwind()
-    const { getPreviousPath } = index({})
 
     return (
         <>
@@ -21,7 +19,7 @@ export default function Details() {
             </div>
             <div className="w-[1110px] flex flex-col">
                 <div className="flex flex-col gap-[56px] mt-[80px]">
-                    <a href="" onClick={() => navigate(`${getPreviousPath()}`)} className={`cursor-pointer ${P} text-[rgba(0,0,0,0.5)]!`}>Go Back</a>
+                    <GoBackButton />
                     <RenderDevices />
                 </div>
                 <div className="mt-[160px] flex justify-between">

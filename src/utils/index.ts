@@ -1,3 +1,5 @@
+import type { TFunctions, TItem } from "../types"
+
 export default function index({ setCart, cart, count }: TFunctions) {
 
     const formatName = (name: string) => {
@@ -12,7 +14,7 @@ export default function index({ setCart, cart, count }: TFunctions) {
     }
 
     const handleCountChange = (name: string, action: boolean) => {
-        const updatedCart = cart!.map((item) => {
+        const updatedCart = cart!.map((item: TItem) => {
             if (item.name === name) {
                 const newCount = action ? item.count + 1 : item.count - 1
                 return { ...item, count: newCount > 0 ? newCount : 1 }
@@ -26,7 +28,7 @@ export default function index({ setCart, cart, count }: TFunctions) {
 
     const handleGetTotal = () => {
         let count = 0
-        cart!.forEach((e) => count += e.price * e.count)
+        cart!.forEach((e: TItem) => count += e.price * e.count)
         return count
     }
 

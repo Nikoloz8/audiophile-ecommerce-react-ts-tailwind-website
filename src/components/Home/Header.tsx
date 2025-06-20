@@ -3,6 +3,7 @@ import tailwind from "../../styles/tailwind"
 import HeaderPart from "./HeaderPart"
 import index from "../../utils"
 import { useNavigate } from "react-router-dom"
+import type { THeader, TItem } from "../../types"
 
 export default function Header({ showCart, setShowCart, cart, setCart }: THeader) {
 
@@ -26,7 +27,7 @@ export default function Header({ showCart, setShowCart, cart, setCart }: THeader
 
     return (
         <header className="flex w-[100%] bg-transparent items-center p-[32px_0] justify-between border-b-[1px] border-solid border-[rgba(255,255,255,0.2)] relative">
-            <HeaderPart />
+            <HeaderPart showCart={showCart} />
             <img onClick={() => setShowCart(!showCart)} src="/images/shared/desktop/icon-cart.svg" className="cursor-pointer" alt="" />
             {showCart ? <div className="absolute flex p-[32px] top-[100px] right-0 z-30! flex-col gap-[32px] bg-[rgba(255,255,255,1)] rounded-[8px] min-w-[377px]">
                 <div className="flex justify-between w-[100%]">

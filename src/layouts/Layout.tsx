@@ -3,6 +3,7 @@ import Footer from '../components/Home/Footer'
 import Header from '../components/Home/Header'
 import SectionThree from '../components/Home/SectionThree'
 import { useState } from 'react'
+import type { TItem } from '../types'
 
 export default function Layout() {
 
