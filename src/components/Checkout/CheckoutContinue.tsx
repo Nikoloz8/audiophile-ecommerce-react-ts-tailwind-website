@@ -57,7 +57,7 @@ export default function CheckoutContinue() {
                         } else {
                             clearErrors("selected")
                             window.scrollTo({ top: 0, behavior: 'smooth' });
-                            setShowSubmit(true)
+                            setShowSubmit!(true)
                         }
                     }
                     } className={`${ButtonStyle} mt-[8px]`}>
