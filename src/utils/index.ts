@@ -51,10 +51,12 @@ export default function index({ setCart, cart, count }: TFunctions) {
             const filteredCart = parsedCart.filter((e: TItem) => e.name !== item.name)
             itemInLocalstorage.count += count
             filteredCart.push(itemInLocalstorage)
+            setCart!(filteredCart)
             const stringedCart = JSON.stringify(filteredCart)
             localStorage.setItem("cart", stringedCart)
         } else {
             parsedCart.push(item)
+            setCart!(parsedCart)
             const stringedCart = JSON.stringify(parsedCart)
             localStorage.setItem("cart", stringedCart)
         }

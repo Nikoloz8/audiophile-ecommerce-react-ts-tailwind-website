@@ -13,7 +13,8 @@ export default function RenderDevices() {
     const navigate = useNavigate()
     const { Overline, SubTitle, P, ButtonStyle, H2, H6 } = tailwind()
     const location = useLocation().pathname
-    const { handleAddToCart } = index({ count })
+    const { setCart } = useOutletContext<TOutlet>()
+    const { handleAddToCart } = index({ count, setCart })
 
     const isDetails = useLocation().pathname.includes("details")
     let filteredData = data.filter((e) => e.category === category).sort((a, b) => b.id - a.id)
@@ -66,7 +67,6 @@ export default function RenderDevices() {
                             <button onClick={() => {
                                 handleAddToCart({ name: e.name, count: count, price: e.price, image: e.image.desktop })
                                 setCount(0)
-                                window.location.reload()
                             }
                             } className={`${ButtonStyle}`}>
                                 ADD TO CART
